@@ -1,5 +1,3 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.Scanner;
 
 public class Principal {
@@ -11,20 +9,35 @@ public class Principal {
         int opc;
 
         do {
-            System.out.println("\n1. Ver personas");
-            System.out.println("\n2. Salir");
+            System.out.println("\n1. Insertar ");
+            System.out.println("\n2. Consultar ");
+            System.out.println("\n3. Actualizar");
+            System.out.println("\n4. Eliminar");
+            System.out.println("\n5. Salir");
             opc = scanner.nextInt();
             if( opc == 1){
-                consultarTable();
+                insertar();
+            }
+            if (opc == 2){
+                consultar();
+            }
+            if (opc == 3){
+                actualizar();
             }
 
-        }while (opc != 2);
+        }while (opc != 5);
     }
 
 
-
-    public static void consultarTable(){
+    public  static void insertar(){
+        DBManager.insertarPersona(1001, "Jose","Romero", "@@@");
+    }
+    public static void consultar(){
         DBManager.consultarPersona();
 
+    }
+
+    public static  void actualizar(){
+       DBManager.actualizarPersona(2, "krikoso");
     }
 }
